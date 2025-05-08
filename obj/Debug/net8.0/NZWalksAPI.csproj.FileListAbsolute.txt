@@ -170,3 +170,4 @@
 /Users/ico/Desktop/NZWalks/NZWalksAPI/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/ico/Desktop/NZWalks/NZWalksAPI/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
 /Users/ico/Desktop/NZWalks/NZWalksAPI/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Users/ico/Desktop/NZWalks/NZWalksAPI/obj/Debug/net8.0/NZWalksAPI.sourcelink.json
