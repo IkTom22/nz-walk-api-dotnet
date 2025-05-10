@@ -1,0 +1,92 @@
+# Configuration files with sensitive data
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# .NET
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+.vscode/
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User-specific files
+*.swp
+*.bak
+*.tmp
+*.orig
+
+# Others
+*.log
+*.vspscc
+*.vssscc
+*.ncb
+*.cache
+*.pdb
+*.mdb
+
+# Entity Framework
+Migrations/
+
+# User secrets
+**/secrets.json
+*.db
+.env
+*.sqlite
+
+# Azure related
+.publish/
+
+# dotnet CLI
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Logs
+logs/
+*.log
+
+# npm
+node_modules/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# JetBrains Rider
+.idea/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Local test databases
+*.mdf
+*.ldf
+
+# SQLite
+*.db
+*.sqlite

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using NZWalksAPI.Data;
 using NZWalksAPI.Models.Domain;
@@ -19,9 +20,46 @@ namespace NZWalksAPI.Repositories
             return walk;
         }
 
+        public async Task<Walk?> DeleteAsync(Guid id)
+        {
+            var walkToDelete = await dbContext.Walks.FirstOrDefaultAsync(x => x.Id == id);
+            if (walkToDelete == null)
+            {
+                return null;
+            }
+            dbContext.Walks.Remove(walkToDelete);
+            await dbContext.SaveChangesAsync();
+            return walkToDelete;
+
+        }
+
         public async Task<List<Walk>> GetAllAsync()
         {
-            return await dbContext.Walks.ToListAsync();
+            //x=>x.Difficulty is type safe
+            return await dbContext.Walks.Include(x => x.Difficulty).Include("Region").ToListAsync();
+        }
+
+        public async Task<Walk?> GetByIdAsync(Guid id)
+        {
+            return await dbContext.Walks.Include("Difficulty").Include("Region").FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Walk?> UpdateAsync(Guid id, Walk walk)
+        {
+            var existingWalk = await dbContext.Walks.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingWalk == null)
+            {
+                return null;
+            }
+            existingWalk.Name = walk.Name;
+            existingWalk.Description = walk.Description;
+            existingWalk.LengthInKm = walk.LengthInKm;
+            existingWalk.WalkImageUrl = walk.WalkImageUrl;
+            existingWalk.DifficultyId = walk.DifficultyId;
+            existingWalk.RegionId = walk.RegionId;
+
+            await dbContext.SaveChangesAsync();
+            return existingWalk;
         }
     }
 }
