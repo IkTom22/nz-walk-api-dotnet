@@ -90,3 +90,5 @@ _ReSharper*/
 # SQLite
 *.db
 *.sqlite
+
+*.sql
