@@ -5167,6 +5167,7 @@
       "Microsoft.AspNetCore.OpenApi >= 8.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.4",
+      "Microsoft.IdentityModel.JsonWebTokens >= 8.9.0",
       "Microsoft.IdentityModel.Tokens >= 8.9.0",
       "Swashbuckle.AspNetCore >= 6.6.2",
       "System.IdentityModel.Tokens.Jwt >= 8.9.0"
@@ -5240,6 +5241,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[9.0.4, )"
+          },
+          "Microsoft.IdentityModel.JsonWebTokens": {
+            "target": "Package",
+            "version": "[8.9.0, )"
           },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",

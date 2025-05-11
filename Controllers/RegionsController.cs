@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -13,6 +14,7 @@ namespace NZWalksAPI.Controllers
     // Route: https://localhost:{port}/api/regions
     [ApiController]
     [Route("api/[controller]")]
+
     public class RegionsController : ControllerBase
     {
         private readonly NZWalksDbContext dbContext;
@@ -30,6 +32,7 @@ namespace NZWalksAPI.Controllers
         // GET ALL regions
         // GET: https://localhost:{port}/api/regions
         [HttpGet]
+        [Authorize(Roles = "Reader, Writer")]
         public async Task<IActionResult> GetAll()
         {
             // Get Data from Database - Domain models
@@ -46,6 +49,7 @@ namespace NZWalksAPI.Controllers
         // GET: https://localhost:{port}/api/regions/{id}
         [HttpGet]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Reader, Writer")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             // Find can only take primary key ( only one param) 
@@ -67,6 +71,7 @@ namespace NZWalksAPI.Controllers
         // POST: https://localhost:{port}/api/regions
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
 
@@ -83,6 +88,7 @@ namespace NZWalksAPI.Controllers
         [HttpPut]
         [Route("{id:Guid}")]
         [ValidateModel]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
         {
 
@@ -101,6 +107,7 @@ namespace NZWalksAPI.Controllers
         // DELETE: https://localhost:{port}/api/regions/{Id}
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             // var regionDomainModel = await dbContext.Regions.FirstOrDefaultAsync(XmlConfigurationExtensions => XmlConfigurationExtensions.Id == id);

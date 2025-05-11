@@ -6,7 +6,7 @@ namespace NZWalksAPI.Data
     public class NZWalksDbContext : DbContext
     {
         //ctor double tap tab
-        public NZWalksDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public NZWalksDbContext(DbContextOptions<NZWalksAuthDbContext> dbContextOptions) : base(dbContextOptions)
         {
 
         }
