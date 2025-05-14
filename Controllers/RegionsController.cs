@@ -1,3 +1,4 @@
+using System.Text.Json;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,29 +21,48 @@ namespace NZWalksAPI.Controllers
         private readonly NZWalksDbContext dbContext;
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<RegionsController> logger;
 
         // Constructor with corrected parameter name
-        public RegionsController(NZWalksDbContext dbContext, IRegionRepository regionRepository, IMapper mapper)
+        public RegionsController(NZWalksDbContext dbContext,
+        IRegionRepository regionRepository, IMapper mapper,
+        ILogger<RegionsController> logger)
         {
             this.dbContext = dbContext;
             this.regionRepository = regionRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         // GET ALL regions
         // GET: https://localhost:{port}/api/regions
         [HttpGet]
-        [Authorize(Roles = "Reader, Writer")]
+        // [Authorize(Roles = "Reader, Writer")]
         public async Task<IActionResult> GetAll()
         {
+            try
+            {
+                // throw new Exception("This is a custom exception");
+                logger.LogInformation("GetAllRegion Action Method was invoked");
+                var regionsDomain = await regionRepository.GetAllAsync();
+                logger.LogInformation($"Finished GetAllRegions request with data: {JsonSerializer.Serialize(regionsDomain)}");
+                //Map Domain Modeks to DTOs
+                var regionsDto = mapper.Map<List<RegionDto>>(regionsDomain);
+                // Return DTOs
+                return Ok(regionsDto);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, ex.Message);
+                throw;
+            }
+
+
+
             // Get Data from Database - Domain models
             // var regionsDomain = await dbContext.Regions.ToListAsync();
-            var regionsDomain = await regionRepository.GetAllAsync();
 
-            //Map Domain Modeks to DTOs
-            var regionsDto = mapper.Map<List<RegionDto>>(regionsDomain);
-            // Return DTOs
-            return Ok(regionsDto);
+
         }
 
         // GET SINGLE REGION (Get Region By ID)

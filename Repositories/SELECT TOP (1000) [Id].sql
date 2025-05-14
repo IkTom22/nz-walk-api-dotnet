@@ -1,8 +1,0 @@
-SELECT TOP (1000) [Id]
-      ,[Name]
-      ,[Description]
-      ,[LengthInKm]
-      ,[WalkImageUrl]
-      ,[DifficultyId]
-      ,[RegionId]
-  FROM [NZWalksDb].[dbo].[Walks]

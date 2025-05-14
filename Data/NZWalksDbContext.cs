@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using NZWalks.Models.Domain;
 using NZWalksAPI.Models.Domain;
 namespace NZWalksAPI.Data
 {
@@ -14,6 +15,8 @@ namespace NZWalksAPI.Data
         public DbSet<Difficulty> Difficulties { get; set; }
         public DbSet<Region> Regions { get; set; }
         public DbSet<Walk> Walks { get; set; }
+
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
