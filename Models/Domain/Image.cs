@@ -1,17 +1,17 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NZWalks.Models.Domain
+namespace NZWalksAPI.Models.Domain
 {
     public class Image
     {
         public Guid Id { get; set; }
         [NotMapped]
-        public IFormFile File { get; set; } //File holds the in-memory file.
-        public string FileName { get; set; }
+        public required IFormFile File { get; set; } //File holds the in-memory file.
+        public required string FileName { get; set; }
         public string? FileDescription { get; set; }
-        public string FileExtension { get; set; } //like jpg , png
-        public long FileSizeInBytes { get; set; }
-        public string FilePath { get; set; }
+        public required string FileExtension { get; set; } //like jpg , png
+        public required long FileSizeInBytes { get; set; }
+        public required string FilePath { get; set; }
 
     }
 }

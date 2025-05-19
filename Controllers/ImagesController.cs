@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
-using NZWalks.Models.Domain;
+using NZWalksAPI.Models.Domain;
 using NZWalksAPI.Models.DTO;
 using NZWalksAPI.Repositories;
 
@@ -34,7 +33,8 @@ namespace NZWalksAPI.Controllers
                     FileExtension = Path.GetExtension(request.File.FileName),
                     FileSizeInBytes = request.File.Length,
                     FileName = request.FileName,
-                    FileDescription = request.FileDescription
+                    FileDescription = request.FileDescription,
+                    FilePath = ""
                 };
                 // User repository to upload imge
                 await imageRepository.Upload(imageDomainModel);

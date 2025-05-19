@@ -6,7 +6,7 @@ using NZWalksAPI.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
-using NZWalks.Repositories;
+using NZWalksAPI.Repositories;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using Serilog;

@@ -4,13 +4,13 @@ namespace NZWalksAPI.Models.DTO
 {
     public class RegisterRequestDto
     {
-        [Required]
+        // [Required]
         [DataType(DataType.EmailAddress)]
-        public string Username { get; set; }
-        [Required]
+        public required string Username { get; set; }
+        // [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public required string Password { get; set; }
 
-        public string[] Roles { get; set; }
+        public required string[] Roles { get; set; }
     }
 }

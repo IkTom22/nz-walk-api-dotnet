@@ -1,13 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
-using NZWalks.Models.Domain;
 using NZWalksAPI.Models.Domain;
 namespace NZWalksAPI.Data
 {
     public class NZWalksDbContext : DbContext
     {
         //ctor double tap tab
-        public NZWalksDbContext(DbContextOptions<NZWalksAuthDbContext> dbContextOptions) : base(dbContextOptions)
+        public NZWalksDbContext(DbContextOptions<NZWalksDbContext> dbContextOptions) : base(dbContextOptions)
         {
 
         }

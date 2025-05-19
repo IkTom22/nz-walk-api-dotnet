@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using NZWalks.Repositories;
+using NZWalksAPI.Repositories;
 
 namespace NZWalksAPI.Repositories
 {

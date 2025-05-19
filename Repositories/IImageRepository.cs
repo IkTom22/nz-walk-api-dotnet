@@ -1,5 +1,5 @@
 using System.Net;
-using NZWalks.Models.Domain;
+using NZWalksAPI.Models.Domain;
 
 namespace NZWalksAPI.Repositories
 {
